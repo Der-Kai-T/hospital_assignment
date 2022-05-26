@@ -16,7 +16,7 @@
     $old = $_POST['discipline_name_old'];
 
     $query		= "Fachrichtung $old bearbeiten";
-    $db_result 	= db_insert("discipline", $data, $where);
+    $db_result 	= db_edit("discipline", $data, $where);
 
 
 

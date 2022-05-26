@@ -48,14 +48,52 @@
 		<li class='nav-header'> </li>
 			<li class='nav-header'>ZUWEISUNG</li>
 	
-				<li class='nav-item'>
-					<a href='index.php?page=assignment' class='nav-link'>
-					<i class="fas fa-hospital-alt"></i>
-					<p>
-						Alle Krankenhäuser
-					</p>
-					</a>
+				<li class='nav-item '>
+					<a href='index.php?page=assignment' class='nav-link bg-light'>
+						<i class="fas fa-hospital-alt"></i>
+						<p>
+							Alle Krankenhäuser
+						</p>
+						</a>
 				</li>
+
+				<?php
+
+					$where = array();
+					$wh['col'] = "area_active";
+					$wh['typ'] = "=";
+					$wh['val'] = "1";
+					array_push($where, $wh);
+
+					$order = array();
+					$order1['col'] = "area_name";
+					$order1['dir'] = "ASC";
+
+					array_push($order, $order1);
+
+					$db_array = db_select("area", $where, $order);
+
+
+					foreach($db_array as $line){
+						$area_id		 	    	= $line['area_id'];
+						$area_name       			= $line['area_name'];
+						
+						echo"
+							<li class='nav-item'>
+								<a href='index.php?page=assignment&area=$area_id' class='nav-link'>
+									<i class='fas fa-hospital-alt'></i>
+									<p>
+										$area_name
+									</p>
+									</a>
+							</li>
+						
+						
+						
+						";
+
+					}
+				?>
 
 
 				<?php//TODO Why is it so croocked??>
