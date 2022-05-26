@@ -67,12 +67,18 @@
 								
 								$area_id		 	    	= $line['area_id'];
 								$area_name       			= $line['area_name'];
+								$area_active				= $line['area_active'];
 								
 								$area_modify_ts 	    	= UnixToTime($line['area_modify_ts']);
 								$area_modify_id 	    	= db_get_user($line['area_modify_id'])['user_name'];
 
 								$hospitals = "";
 
+								if($area_active == 1){
+									$toggle_state = "<a href='index.php?page=area_toggle&area_id=$area_id&state=enabled'><i class='fas fa-eye-slash'></i></a>";
+								}else{
+									$toggle_state = "<a href='index.php?page=area_toggle&area_id=$area_id&state=disabled'><i class='fas fa-eye'></i></a>";;
+								}
 								
 								echo "
 									<tr>
@@ -80,7 +86,7 @@
 										<td>$hospitals</td>
 							
 										<td>$area_modify_ts<br>$area_modify_id</td>
-										<td><a href='index.php?page=area_edit&area_id=$area_id'><span class='fa fa-edit'></span></a></td>
+										<td><a href='index.php?page=area_edit&area_id=$area_id'><span class='fa fa-edit'></span></a> &nbsp;&nbsp; $toggle_state</td>
 									</tr>
 								
 								";
