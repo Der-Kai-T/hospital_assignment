@@ -76,7 +76,7 @@
 						<a href='index.php?page=discipline' class='nav-link'>
 						  <i class='nav-icon fa fa-list'></i>
 						  <p>
-							Fachbereiche
+							Fachrichtungen
 						  </p>
 						</a>
 					</li>
