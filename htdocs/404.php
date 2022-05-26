@@ -34,8 +34,8 @@
         <div class="card-body" style="">
           <p>Die von Ihnen angeforderte Seite konnte nicht gefunden werden.
           Bitte gehen Sie zur <a href="index.php">Startseite</a> zurück und versuchen Sie, von dort das gewünschte Ziel zu erreichen.
-          </p><p>Ist auch das nicht möglich wenden Sie sich bitte an die Entwickler über das
-          <a class="" href="https://kai-thater.de/bug/" target="_blanck">Support-System <span class="fas fa-external-link-alt"></span></a></p>
+          </p><p>Ist auch das nicht möglich prüfen Sie bitte die Bug-Reports bei 
+          <a class="" href="https://github.com/Der-Kai-T/hospital_assignment/issues" target="_blanck">GitHub <span class="fas fa-external-link-alt"></span></a> und erstellen bei Bedarf einen neuen. Vielen Dank.</p>
         </div>
       </div>
     </div>

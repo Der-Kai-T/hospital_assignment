@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Login BKD Manager</title>
+  <title>Login HospitalDispatch</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,26 +33,27 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <b>BKD</b>Manager
+    <b>Hosptital</b>Dispatch
   </div>
   <!-- /.login-logo -->
   
   
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Bitte geben Sie Ihre Anmeldedaten ein</p>
+    <p class="login-box-msg">Bitte geben Sie Ihre Anmeldedaten ein</p>
 		
 		<?php
 		if(isset($_GET['e'])){
-			 echo"<div class='login-box-msg bg-warning'>Benutzerkennung und/oder Passwort falsch</div>";
+			 echo"<div class='login-box-msg bg-warning'>Benutzerkennung und/oder Passwort falsch</div>
+       <p class='login-box-msg'>&nbsp;</p>";
     }
     
-    //echo password_hash("admin", PASSWORD_DEFAULT);
+   
 		?>
-		<p class='login-box-msg'>&nbsp;</p>
+		
       <form action="login_script.php" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" placeholder="Benutzerkennung">
+          <input type="text" class="form-control" name="email" placeholder="Benutzerkennung">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -81,9 +82,7 @@
 
      
 
-      <p class="mb-1">
-        <a href="login_lost_password.php">Passwort vergessen</a>
-      </p>
+     
      
     </div>
     <!-- /.login-card-body -->

@@ -18,12 +18,13 @@
         <div class="info">
          
 			<?php
-				if(isset($_SESSION['bkd_user_id'])){
-					$first 		= $_SESSION['bkd_user_first'];
-					$last 		= $_SESSION['bkd_user_last'];
-					$signature 	= $_SESSION['user_signature'];
+				if(isset($_SESSION['hd_user_id'])){
+					$name 		= $_SESSION['hd_user_name'];
+					$admin 		= $_SESSION['hd_user_admin'];
+					if($admin == 1){ $admin_ = "Administrator";}else{$admin_="";}
 					
-					echo"<a href='index.php?page=user_data' title='Benutzerkonto bearbeiten' class='d-block'>$first $last<br>$signature</a>
+					echo"<span class='text-light'>Angemeldeter Benutzer:</span><br>
+					<a href='index.php?page=user_data' title='Benutzerkonto bearbeiten' class='d-block'>$name<br>$admin_</a>
 					";
 					
 				}else{
@@ -45,62 +46,28 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
          
 		<li class='nav-header'> </li>
-			<li class='nav-header'>ABGEMELDETE FAHRZEUGE</li>
+			<li class='nav-header'>ZUWEISUNG</li>
 	
 				<li class='nav-item'>
-					<a href='index.php?page=sv_report' class='nav-link'>
-					<i class='nav-icon fa fa-envelope'></i>
+					<a href='index.php?page=assignment' class='nav-link'>
+					<i class="fas fa-hospital-alt"></i>
 					<p>
-						Meldungen
+						Alle Krankenhäuser
 					</p>
 					</a>
 				</li>
 
 
-				<li class='nav-item'>
-					<a href='index.php?page=sv_open' class='nav-link'>
-					<i class='nav-icon fa fa-tasks'></i>
-					<p>
-						offene Aufträge
-					</p>
-					</a>
-				</li>
+				<?php//TODO Why is it so croocked??>
 
-				<li class='nav-item'>
-					<a href='index.php?page=sv_towing_pending' class='nav-link'>
-					<i class='nav-icon fa fa-tasks'></i>
-					<p>
-						offene Abschleppaufträge
-					</p>
-					</a>
-				</li>
-
-
-				<li class='nav-item'>
-					<a href='index.php?page=sv_towing_done' class='nav-link'>
-					<i class='nav-icon fa fa-tasks'></i>
-					<p>
-						abgeschlossene Abschleppaufträge
-					</p>
-					</a>
-				</li>
-
-				<li class='nav-item'>
-					<a href='index.php?page=sv_report_achive' class='nav-link'>
-					<i class='nav-icon fas fa-archive'></i>
-					<p>
-						Meldungs-Archiv
-					</p>
-					</a>
-				</li>
 			
-					<li class='nav-header'>STAMMDATEN</li>
+					<li class='nav-header'>VERWALTUNG</li>
 					
 					<li class='nav-item'>
-						<a href='index.php?page=z_file_number' class='nav-link'>
-						  <i class='nav-icon fa fa-list'></i>
+						<a href='index.php?page=hospital' class='nav-link'>
+						<i class="fas fa-hospital"></i>
 						  <p>
-							Aktenzeichen
+							Krankenhäuser
 						  </p>
 						</a>
 					</li>
@@ -109,16 +76,16 @@
 						<a href='index.php?page=z_sv_action' class='nav-link'>
 						  <i class='nav-icon fa fa-list'></i>
 						  <p>
-							abgem.Fzg. Tätigkeiten
+							Fachbereiche
 						  </p>
 						</a>
 					</li>
 
 					<li class='nav-item'>
 						<a href='index.php?page=z_sgv' class='nav-link'>
-						  <i class='nav-icon fa fa-road'></i>
+						<i class="fas fa-map"></i>
 						  <p>
-							SGV
+							Abschnitte / Bereiche
 						  </p>
 						</a>
 					</li>

@@ -268,7 +268,7 @@ function db_select_injectable($table, $where_=array(), $order_ = array(), $limit
 	global $pdo_connection;
 	$return = array();
 
-	$pdo = new PDO($pdo_connection['mysql'], $pdo_connection['user'], $pdo_connection['pwd']);
+	$pdo = new PDO($pdo_connection['mysql'], $pdo_connection['user_ro'], $pdo_connection['pwd_ro']);
 
 	//generatere WHERE
 	$where_clause = "";
@@ -281,7 +281,12 @@ function db_select_injectable($table, $where_=array(), $order_ = array(), $limit
 			$col = db_parse($where['col']);
 			$val = db_parse($where['val']);
 			$typ = $where['typ'];
-			$where_clause .= "$col $typ $val AND ";
+
+			if(is_numeric($val)){
+				$where_clause .= "$col $typ $val AND ";
+			}else{
+				$where_clause .= "$col $typ '$val' AND ";
+			}
 		}
 	}
 
@@ -322,7 +327,7 @@ function db_select_injectable($table, $where_=array(), $order_ = array(), $limit
 	//generate SQL
 
 	$sql = "SELECT * FROM $table $where $order $limit"; 
-	echo $sql;
+	//echo $sql;
 	$statement = $pdo->prepare($sql);
 
 
@@ -364,10 +369,12 @@ function db_select_injectable($table, $where_=array(), $order_ = array(), $limit
 		array_push($where, $wh);
 
 		$db_result = db_select("user", $where)[0];
-		$db_result['user_full'] = $db_result['user_firstname']. " ". $db_result['user_lastname']. " (". $db_result['user_signature']. ")";
-		$db_result['user_external'] = $db_result['user_lastname']. " (". $db_result['user_signature']. ")";
-		$db_result['user_shortname'] = substr($db_result['user_firstname'],0,1). ". ". $db_result['user_lastname'];
-
+		
+		// Fields currently not present in database will be added later - mayby
+		// $db_result['user_full'] = $db_result['user_firstname']. " ". $db_result['user_lastname']. " (". $db_result['user_signature']. ")";
+		// $db_result['user_external'] = $db_result['user_lastname']. " (". $db_result['user_signature']. ")";
+		// $db_result['user_shortname'] = substr($db_result['user_firstname'],0,1). ". ". $db_result['user_lastname'];
+		
 		
 		return $db_result;
 	

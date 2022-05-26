@@ -51,6 +51,10 @@
 					$errorinfo = $pdo_error[$prefix.'message'];
 				}
 			}
+
+			if(strlen($errorinfo)>0){
+				$errorinfo = "<pre>".$errorinfo."</pre>";
+			}
 			echo"
 				<div class='row dontprint'>
 					<div class='col-12'>
@@ -62,13 +66,12 @@
 							</div>
 							
 							<div class='card-body' style=''>
-							<b>Fehlermeldung</b>:<br>
-							$error_string<br>
-							 <pre>$errorinfo</pre>
-							 <br>
-								Bei Fragen bitte an die Entwickler wenden (E-Mail siehe Fußzeile)
-
-								
+								<b>Fehlermeldung</b>:<br>
+								$error_string<br>
+								$errorinfo
+							 </div>
+							 <div class='card-footer'>
+							 	Bei Verdacht einer Fehlfunktion bitte die Bugreports bei <a class='' href='https://github.com/Der-Kai-T/hospital_assignment/issues' target='_blanck'>GitHub <span class='fas fa-external-link-alt'></span></a> prüfen und bei Bedarf einen neuen öffnen. Vielen Dank.
 							 </div>
 						</div>
 					</div>

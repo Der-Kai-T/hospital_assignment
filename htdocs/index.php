@@ -1,12 +1,12 @@
 <?php session_start(); 
   error_reporting(E_ALL);
-  $global_application_name = "<b>BKD</b>Manager";
-  $global_application_name_header = "";
+  $global_application_name = "<b>Hospital</b>Dispatch";
+  $global_application_name_header = "Hospital Dispatch &#124; ";
   $_SESSION['debug']=false;
   
   $security_required_level = 1;
   date_default_timezone_set('Europe/Berlin');
-  if(isset($_SESSION['bkd_user_id'])){
+  if(isset($_SESSION['hd_user_id'])){
     
   }else{
     header("Location:login.php");
@@ -30,7 +30,7 @@
 		<meta http-equiv="Pragma" content="no-cache" />
 		<meta http-equiv="Expires" content="0" />
 
-  <title>BKD Manager</title>
+  <title>HospitalDispatch</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -56,8 +56,8 @@
     <!-- Bootstrap Color Picker -->
     <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
 
- 
- <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">-->
+ <?php//TODO make local?>
+ <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 
   <link rel="icon" href="img/logo.png" type="image/x-icon">

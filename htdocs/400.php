@@ -35,8 +35,9 @@
       <div class="card-body" style="">
         <p>Beim Versuch Ihre Anfrage zu Verarbeiten ist ein Fehler aufgetreten. Es wurden nicht alle benötigten Informationen übermittelt. </p>
 
-        <p>Bitte melden Sie diesen Fehler unter Angabe der Anfrage, die Sie gestellt haben über das
-          <a class="" href="https://kai-thater.de/bug/" target="_blanck">Support-System <span class="fas fa-external-link-alt"></span></a></p>
+        <p>Bitte melden Sie diesen Fehler unter Angabe der Anfrage, die Sie gestellt haben über bei 
+          <a class="" href="https://github.com/Der-Kai-T/hospital_assignment/issues" target="_blanck">GitHub <span class="fas fa-external-link-alt"></span></a></p>
+          
       </div>
     </div>
   </div>

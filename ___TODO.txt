@@ -1,0 +1,7 @@
+IDEA:
+
+Database:
+list of hospitals, list of disciplines, linktable
+capacity for each hospital (no disciplines)
+suspension: either discipline or full cer (central emergency room) with time starting and ending
+area: assign hospital to one or more area (n:m)
