@@ -16,13 +16,13 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-<?php include("include/html_result.php"); ?>
+
 
 
 
 <!-- Main content -->
 <section class="content">
-
+<?php include("include/html_result.php"); ?>
 
 
 <div class="row">
@@ -44,6 +44,7 @@
 								<th>Adresse</th>
 								<th>Fachbereiche</th>
 								<th>Abschnitte</th>
+								<th>geändert</th>
 								<th>Aktionen</th>
 								
 							</tr>
@@ -55,37 +56,38 @@
 
 						
 							$order = array();
-							$order1['col'] = "file_number_prefix";
+							$order1['col'] = "hospital_name";
 							$order1['dir'] = "ASC";
 							
 							array_push($order, $order1);
 							
-							$db_array = db_select("file_number", array(), $order);
+							$db_array = db_select("hospital", array(), $order);
 
 						
 							foreach($db_array as $line){
 								
-								$file_number_id		 		= $line['file_number_id'];
-								$file_number_prefix 		= $line['file_number_prefix'];
-								$file_number_name	 		= $line['file_number_name'];
-								$file_number_next_free 		= $line['file_number_next_free'];
-								$file_number_modify_ts 		= UnixToTime($line['file_number_modify_ts']);
-								$file_number_modify 		= db_get_user($line['file_number_modify_id'])['user_full'];
+								$hospital_id		 		= $line['hospital_id'];
+								$hospital_name 				= $line['hospital_name'];
+								$hospital_street	 		= $line['hospital_street'];
+								$hospital_number 			= $line['hospital_number'];
+								$hospital_zip 				= $line['hospital_zip'];
+								$hospital_town 				= $line['hospital_town'];
+								$hospital_capacity 			= $line['hospital_capacity'];
+								$hospital_name_short 		= $line['hospital_name_short'];
+								$hospital_modify_ts 		= UnixToTime($line['hospital_modify_ts']);
+								$hospital_modify_id 		= db_get_user($line['hospital_modify_id'])['user_name'];
 
+								$disciplines = "";
 
-								$now = time();
-								$year = UnixToYear($now);
-								$next_file_number = $file_number_prefix.format_filenumber($file_number_next_free)."/".$year;
-
-
+								$areas = "";
 								echo "
 									<tr>
-										<th>$file_number_prefix</th>
-										<td>$file_number_name</td>
-										
-										<td>$next_file_number</td>
-										<td>$file_number_modify_ts<br>$file_number_modify</td>
-										<td><a href='index.php?page=z_file_number_edit&file_number_id=$file_number_id&file_number_prefix=$file_number_prefix'><span class='fa fa-edit'></span></a></td>
+										<th>$hospital_name ($hospital_name_short)</th>
+										<td>$hospital_street $hospital_number <br> $hospital_zip $hospital_town</td>
+										<td>$disciplines</td>
+										<td>$areas</td>
+										<td>$hospital_modify_ts<br>$hospital_modify_id</td>
+										<td><a href='index.php?page=hospital_edit&hospital_id=$hospital_id'><span class='fa fa-edit'></span></a></td>
 									</tr>
 								
 								";

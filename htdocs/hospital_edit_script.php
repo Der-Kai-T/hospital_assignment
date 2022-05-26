@@ -11,6 +11,7 @@ Array
 )
 
 */
+    $old = $_POST['hospital_name_old'];
 
 
     $data['hospital_name'] 	= $_POST['hospital_name'];
@@ -23,11 +24,16 @@ Array
     $data['hospital_modify_ts'] 	= time();
     $data['hospital_modify_id'] 	= $_SESSION['hd_user_id'];
 
+    $where = array();
+    $wh['col'] = "hospital_id";
+    $wh['typ'] = "=";
+    $wh['val'] = $_POST['hospital_id'];
+    array_push($where, $wh);
 
-    
+        
 
-    $query		= "Neues Krankenhaus anlegen";
-    $db_result 	= db_insert("hospital", $data);
+    $query		= "Krankenhaus $old bearbeiten";
+    $db_result 	= db_update("hospital", $data, $where);
 
 
 
@@ -35,6 +41,3 @@ Array
 
 ?>
 
-
-
-?>

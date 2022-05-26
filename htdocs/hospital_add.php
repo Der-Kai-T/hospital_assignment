@@ -3,12 +3,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><?php echo($global_application_name_header);?>  Krankenhaus</h1>
+            <h1 class="m-0"><?php echo($global_application_name_header);?>  Krankenhäuser</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Startseite</a></li>
-              <li class="breadcrumb-item active">Krankenhaus</li>
+              <li class="breadcrumb-item active">Krankenhäuser</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -47,8 +47,8 @@
                                 <div class="col-4">
 								
 									<div class="form-group">
-										<label class="col-form-label" for="hospital_name">Abkürzung</label>
-										<input required type="text" name="hospital_name"  class="form-control" placeholder="wird an Orten verwendete, an denen weniger Platz ist">
+										<label class="col-form-label" for="hospital_name_short">Abkürzung</label>
+										<input required type="text" name="hospital_name_short"  class="form-control" placeholder="wird an Orten verwendete, an denen weniger Platz ist">
 									</div>
 								</div>
 

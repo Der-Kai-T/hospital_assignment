@@ -73,7 +73,7 @@
 					</li>
 
 					<li class='nav-item'>
-						<a href='index.php?page=z_sv_action' class='nav-link'>
+						<a href='index.php?page=discipline' class='nav-link'>
 						  <i class='nav-icon fa fa-list'></i>
 						  <p>
 							Fachbereiche
@@ -82,7 +82,7 @@
 					</li>
 
 					<li class='nav-item'>
-						<a href='index.php?page=z_sgv' class='nav-link'>
+						<a href='index.php?page=area' class='nav-link'>
 						<i class="fas fa-map"></i>
 						  <p>
 							Abschnitte / Bereiche
