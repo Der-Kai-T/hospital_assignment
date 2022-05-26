@@ -78,8 +78,57 @@
 								$hospital_modify_id 		= db_get_user($line['hospital_modify_id'])['user_name'];
 
 								$disciplines = "";
+									$sql		= "SELECT * FROM discipline d, hospital_discipline l, hospital h WHERE d.discipline_id = l.discipline_id AND h.hospital_id = l.hospital_id AND h.hospital_id = :id";
+															
+									$pdo 		= new PDO($pdo_mysql, $pdo_db_user, $pdo_db_pwd);
+									
+									$statement	= $pdo->prepare($sql);
+									
+									$statement->bindParam(':id', $hospital_id);
+									
+									$statement->execute();
+									
+									
+									while($row = $statement->fetch()){
+										foreach ($row as $key => $value){
+											$row[$key] = db_parse($value);
+										}
+
+										$discipline_id = $row['discipline_id'];
+										$discipline_name = $row['discipline_name'];
+										$link_id = $row['hospital_discipline_id'];
+										$disciplines .= "$discipline_name <a href='index.php?page=hospital_discipline_unlink&link_id=$link_id&hospital_id=$hospital_id&discipline_id=$discipline_id'><i class='fas fa-unlink'></i></a><br>";
+									}
+								
+								$disciplines.= "<br><a href='index.php?page=hospital_discipline_add'><i class='fas fa-plus'></i> hinzufügen";
 
 								$areas = "";
+
+								//Meldungen offen, gesamt
+
+									$sql		= "SELECT * FROM area a, hospital_area l, hospital h WHERE a.area_id = l.area_id AND h.hospital_id = l.hospital_id AND h.hospital_id = :id";
+														
+									$pdo 		= new PDO($pdo_mysql, $pdo_db_user, $pdo_db_pwd);
+									
+									$statement	= $pdo->prepare($sql);
+									
+									$statement->bindParam(':id', $hospital_id);
+									
+									$statement->execute();
+									
+									
+									while($row = $statement->fetch()){
+										foreach ($row as $key => $value){
+											$row[$key] = db_parse($value);
+										}
+
+										$area_name = $row['area_name'];
+										$link_id = $row['hospital_area_id'];
+										$areas .= "$area_name <a href='index.php?page=hospital_area_unlink&link_id=$link_id&hospital_id=$hospital_id&area_id=$area_id'><i class='fas fa-unlink'></i></a><br>";
+									}
+
+
+								$areas.= "<br><a href='index.php?page=hospital_area_add'><i class='fas fa-plus'></i> hinzufügen";
 								echo "
 									<tr>
 										<th>$hospital_name ($hospital_name_short)</th>

@@ -74,6 +74,36 @@
 
 								$hospitals = "";
 
+								//Meldungen offen, gesamt
+
+									$sql		= "SELECT * FROM area a, hospital_area l, hospital h WHERE a.area_id = l.area_id AND h.hospital_id = l.hospital_id AND a.area_id = :id";
+														
+									$pdo 		= new PDO($pdo_mysql, $pdo_db_user, $pdo_db_pwd);
+									
+									$statement	= $pdo->prepare($sql);
+									
+									$statement->bindParam(':id', $area_id);
+									
+									$statement->execute();
+									
+									
+									while($row = $statement->fetch()){
+										foreach ($row as $key => $value){
+											$row[$key] = db_parse($value);
+										}
+
+										$hospital_name = $row['hospital_name'];
+										$link_id = $row['hospital_area_id'];
+										$hospital_id = $row['hospital_id'];
+										$area_id = $row['area_id'];
+										$hospitals .= "$hospital_name <a href='index.php?page=hospital_area_unlink&link_id=$link_id&hospital_id=$hospital_id&area_id=$area_id'><i class='fas fa-unlink'></i></a><br>";
+
+									
+									}
+
+									
+								$hospitals.= "<br><a href='index.php?page=hospital_area_add'><i class='fas fa-plus'></i> hinzufügen";
+
 								if($area_active == 1){
 									$toggle_state = "<a href='index.php?page=area_toggle&area_id=$area_id&state=enabled'><i class='fas fa-eye-slash'></i></a>";
 								}else{
