@@ -65,6 +65,7 @@
   
   <!-- User-CSS -->
   <link href="css/usercss.css" rel="stylesheet">
+  <link href="css/darkmode.css" rel="stylesheet">
   
 
    
@@ -74,7 +75,7 @@
   
   
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed dark-mode">
 <div class="wrapper">
 
   <?php
