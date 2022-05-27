@@ -106,4 +106,5 @@
   ?>
   
   <script src='js/userjs.js'></script>
+  <script src='js/wss.js'></script>
         
