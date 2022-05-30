@@ -49,7 +49,7 @@
 			<li class='nav-header'>ZUWEISUNG</li>
 	
 				<li class='nav-item '>
-					<a href='index.php?page=assignment' class='nav-link bg-light'>
+					<a href='index.php?page=assignment&short' class='nav-link bg-light'>
 						<i class="fas fa-hospital-alt"></i>
 						<p>
 							Alle Krankenhäuser
@@ -80,7 +80,7 @@
 						
 						echo"
 							<li class='nav-item'>
-								<a href='index.php?page=assignment&area=$area_id' class='nav-link'>
+								<a href='index.php?page=assignment&area=$area_id&short' class='nav-link'>
 									<i class='fas fa-hospital-alt'></i>
 									<p>
 										$area_name

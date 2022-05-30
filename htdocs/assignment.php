@@ -101,6 +101,42 @@
         $next_free_capacity = rand(1,5);
         $next_free_time     = rand(4,15);
 
+        $closure = get_hospital_closure($hospital_id);
+        $text_bg = "";
+        
+        if(count($closure)>0){
+            
+            $text = "";
+            $closure = $closure[0];
+            if($closure['hospital_closure_start_ts']<time()){
+                $hospital_space = "n/a";
+
+                if($closure['discipline_id']==0){
+                    $discipline_name = "ZNA";
+                }else{
+                    $discipline_name = $closure['discipline_name'];
+                }
+                $mins = floor(($closure['hospital_closure_end_ts'] - time())/60);
+                $text = "$discipline_name noch $mins Minuten gesperrt (".UnixToClock($closure['hospital_closure_start_ts'])." - ".UnixToClock($closure['hospital_closure_end_ts'])." Uhr) ";
+                $bg_color = $bg_colors[0];
+            }else{
+                if($closure['discipline_id']==0){
+                    $discipline_name = "ZNA";
+                }else{
+                    $discipline_name = $closure['discipline_name'];
+                }
+                $mins = floor(($closure['hospital_closure_start_ts'] - time())/60);
+                $text = "$discipline_name in $mins Minuten gesperrt (".UnixToClock($closure['hospital_closure_start_ts'])." - ".UnixToClock($closure['hospital_closure_end_ts'])." Uhr) ";
+              
+                $text_bg = "bg-orange";
+            }
+
+
+            
+        }else{
+            $text = "nächster frei $next_free_capacity in $next_free_time min";
+        }
+
         if(isset($_GET['short'])){
             echo "
             <div class='col-$col_wdth'>
@@ -111,7 +147,8 @@
 
                     <div class='info-box-content'>
                         <span class='info-box-text'>$hospital_name ($hospital_id)</span>
-                        <span class='info-box-number'>nächster frei $next_free_capacity in $next_free_time min</span>
+                        <span class='info-box-number $text_bg'>$text</span>
+                        
                     </div>
                 </div>
             </div>
@@ -151,6 +188,39 @@
             $i = 0;
         }
 
+    }
+
+
+
+
+    function get_hospital_closure($hospital_id){
+        global $pdo_mysql, $pdo_db_user, $pdo_db_pwd;
+        
+        $return = array();
+
+        $now        = time();
+        $now_       = $now + 1800;
+        $pdo 		= new PDO($pdo_mysql, $pdo_db_user, $pdo_db_pwd);
+        $sql		= "SELECT * FROM hospital_closure h, discipline d WHERE h.discipline_id = d.discipline_id AND h.hospital_id = $hospital_id AND h.hospital_closure_end_ts > $now AND h.hospital_closure_start_ts < $now_ ORDER BY h.hospital_closure_start_ts";
+       // echo $sql;
+        $statement	= $pdo->prepare($sql);
+        // $statement->bindParam(':hid', $hospital_id);
+        // $statement->bindParam(':end', $now);
+        // $statement->bindParam(':start', $now_);
+        $statement->execute();
+
+
+        while($row = $statement->fetch()){
+            foreach ($row as $key => $value){
+                $row[$key] = db_parse($value);
+            }
+            array_push($return, $row);
+        }
+
+
+
+
+        return $return;
     }
 
 ?>
