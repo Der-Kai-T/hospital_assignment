@@ -96,6 +96,15 @@
 				?>
 
 
+					<li class='nav-item '>
+						<a href='index.php?page=hospital_closure' class='nav-link text-danger'>
+						<i class="fas fa-lock"></i>
+						  <p>
+							Sperrungen
+						  </p>
+						</a>
+					</li>
+
 				<?php//TODO Why is it so croocked??>
 
 			
