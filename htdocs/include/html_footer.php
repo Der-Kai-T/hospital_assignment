@@ -60,5 +60,8 @@
 
 <!-- Bootstrap Switch -->
 <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
+<!-- Socket.IO -->
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,5 +1,11 @@
 
 htdocs/include/db_connect.php
-*.code-workspace
 htdocs/include/mail_credentials.php
 htdocs/include/pepper.php
+
+wss/node_modules/
+
+
+*.pem
+*credentials.json
+*.code-workspace
