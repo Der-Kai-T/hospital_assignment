@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><?php echo($global_application_name_header);?>  Zuweisung (Zufallsdaten!)</h1>
+            <h1 class="m-0"><?php echo($global_application_name_header);?>  Zuweisung</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -78,11 +78,17 @@
             echo "<div class='row'>";
         }
 
+        
+
+
+
+
+
         $hospital_name        = $line['hospital_name'];
         $hospital_id          = $line['hospital_id'];
         $hospital_capacity    = $line['hospital_capacity'];
       
-        $hospital_occupied    = rand(0,$hospital_capacity+3);
+        $hospital_occupied    = get_hospital_allocation($hospital_id);
 
         $hospital_occupied_percent = ($hospital_occupied/$hospital_capacity)*100;
 
@@ -98,8 +104,17 @@
 
         $hospital_space = $hospital_capacity - $hospital_occupied;
 
-        $next_free_capacity = rand(1,5);
-        $next_free_time     = rand(4,15);
+        $next_free          = get_hospital_free($hospital_id);
+        $now                = time();
+
+        if(count($next_free)>0){
+            $next_free          = $next_free[0];
+            $next_free_capacity = $next_free['transport_weight'];
+            $next_free_time     = floor(($next_free['transport_timestamp'] + $next_free['transport_duration'] - $now)/60);
+        }else{
+            $next_free_capacity = 0;
+            $next_free_time     = 0;
+        }
 
         $closure = get_hospital_closure($hospital_id);
         $text_bg = "";
@@ -134,7 +149,11 @@
 
             
         }else{
-            $text = "nächster frei $next_free_capacity in $next_free_time min";
+            if($next_free_capacity == 0){
+                $text   = "&nbsp;";
+            }else{
+                $text = "nächster frei $next_free_capacity in $next_free_time min";
+            }
         }
 
         if(isset($_GET['short'])){
@@ -142,12 +161,12 @@
             <div class='col-$col_wdth'>
                 <div class='info-box $bg_color' id='hospital_$hospital_id'>
 
-                    <span class='info-box-icon'>$hospital_space
+                    <span class='info-box-icon' id='hospital_space_$hospital_id'>$hospital_space
                     </span>
 
                     <div class='info-box-content'>
-                        <span class='info-box-text'>$hospital_name ($hospital_id)</span>
-                        <span class='info-box-number $text_bg'>$text</span>
+                        <span class='info-box-text'id='hospital_name_$hospital_id'>$hospital_name ($hospital_id)</span>
+                        <span class='info-box-number $text_bg' id='hospital_txt_$hospital_id'>$text</span>
                         
                     </div>
                 </div>
@@ -193,34 +212,5 @@
 
 
 
-    function get_hospital_closure($hospital_id){
-        global $pdo_mysql, $pdo_db_user, $pdo_db_pwd;
-        
-        $return = array();
-
-        $now        = time();
-        $now_       = $now + 1800;
-        $pdo 		= new PDO($pdo_mysql, $pdo_db_user, $pdo_db_pwd);
-        $sql		= "SELECT * FROM hospital_closure h, discipline d WHERE h.discipline_id = d.discipline_id AND h.hospital_id = $hospital_id AND h.hospital_closure_end_ts > $now AND h.hospital_closure_start_ts < $now_ ORDER BY h.hospital_closure_start_ts";
-       // echo $sql;
-        $statement	= $pdo->prepare($sql);
-        // $statement->bindParam(':hid', $hospital_id);
-        // $statement->bindParam(':end', $now);
-        // $statement->bindParam(':start', $now_);
-        $statement->execute();
-
-
-        while($row = $statement->fetch()){
-            foreach ($row as $key => $value){
-                $row[$key] = db_parse($value);
-            }
-            array_push($return, $row);
-        }
-
-
-
-
-        return $return;
-    }
 
 ?>

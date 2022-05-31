@@ -8,6 +8,23 @@ function socket_init() {
 
 	socket.on("connect", function () {
 		console.log("Socket connected.");
+		set_mode("online");
 	});
 
+}
+
+function update_hospital(id, space, text){
+	$('#hospital_space_'+id).html(space.toString());
+	$('#hospital_txt_' + id).html(text.toString());
+}
+
+
+function set_mode(mode){
+	if(mode == "online"){
+		$('#is_online').show();
+		$('#is_offline').hide();
+	}else{
+		$('#is_online').hide();
+		$('#is_offline').show();
+	}
 }
