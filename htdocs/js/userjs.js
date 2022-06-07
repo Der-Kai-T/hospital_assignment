@@ -12,6 +12,10 @@ let sec_counting  = sec_to_sync-2;
 let interval_countdown;
 let interval_reload;
 
+if (typeof open_websocket !== 'undefined'){
+	socket_init();
+}
+
 function currentDate(input_name, deadline_field = "") {
 	var json_string = "js_db/today.php";
 	var json = $.getJSON(json_string, function (data) {
@@ -146,6 +150,26 @@ function update_hospital(item){
 	$('#hospital_txt_' + hospital_id).html(newtxt);
 	
 }
+
+function transport_submit(){
+	let data = {};
+	let now = Math.floor(Date.now() / 1000);
+
+	data.transport_number 		= $('#transport_number').val();
+	data.hospital_id 			= $('#hospital').val();
+	data.discipline_id 			= $('#discipline').val();
+	data.transport_weight		= $('#transport_weight').val();
+	data.transport_duration 	= $('#transport_duration').val();
+	data.transport_timestamp	= now;
+	data.transport_modify_ts	= now;
+	data.transport_modify_id	= hd_user_id;
+
+	socket.emit("transport", data);
+	
+}
+
+
+
 
 
 if (typeof open_websocket !== 'undefined'){

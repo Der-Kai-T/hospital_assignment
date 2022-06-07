@@ -24,8 +24,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -54,14 +53,12 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="js/adminlte.js"></script>
-  	<!-- DataTables -->
-    <script src='plugins/datatables/jquery.dataTables.js'></script>
+<!-- DataTables -->
+<script src='plugins/datatables/jquery.dataTables.js'></script>
 <script src='plugins/datatables-bs4/js/dataTables.bootstrap4.js'></script>
 
 <!-- Bootstrap Switch -->
 <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 
-<!-- Socket.IO -->
-<script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
 </body>
 </html>

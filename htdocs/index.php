@@ -7,7 +7,7 @@
   $security_required_level = 1;
   date_default_timezone_set('Europe/Berlin');
   if(isset($_SESSION['hd_user_id'])){
-    
+    echo"<script> const hd_user_id = ".$_SESSION['hd_user_id'].";</script>";
   }else{
     header("Location:login.php");
     die;
@@ -57,10 +57,15 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-    <!-- Bootstrap Color Picker -->
-    <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
     
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
     
+  <!-- Socket.IO -->
+  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+  <script src='js/wss.js'></script>
 
  <?php//TODO make local?>
  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -112,5 +117,5 @@
   ?>
   
   <script src='js/userjs.js'></script>
-  <script src='js/wss.js'></script>
+
         

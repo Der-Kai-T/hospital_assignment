@@ -1,8 +1,6 @@
 var socket;
 
-if (typeof open_websocket !== 'undefined'){
-	socket_init();
-}
+
 
 
 function socket_init() {
@@ -30,7 +28,7 @@ function socket_init() {
 
 
 function hospital_received(data){
-	//console.log(data);
+	console.log("hospital received");
 	update_hospital(data);
 }
 

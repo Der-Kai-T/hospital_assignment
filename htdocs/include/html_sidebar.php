@@ -105,6 +105,15 @@
 						</a>
 					</li>
 
+					<li class='nav-item '>
+						<a href='index.php?page=transport' class='nav-link'>
+						<i class="fas fa-ambulance"></i>
+						  <p>
+							Alle Transporte
+						  </p>
+						</a>
+					</li>
+
 				<?php//TODO Why is it so croocked??>
 
 			

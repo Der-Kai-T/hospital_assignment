@@ -211,9 +211,20 @@
 
 
 
-
-
+$javascript = true;
+include("transport_add_form.php");
 ?>
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
     let open_websocket = true;
