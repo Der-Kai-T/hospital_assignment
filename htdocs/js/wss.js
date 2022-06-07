@@ -8,8 +8,13 @@ if (typeof open_websocket !== 'undefined'){
 function socket_init() {
 	console.log("Connecting to socket.io");
 
-	//socket = io.connect("wss://eventtools.conservices.de:3000");
-	socket = io.connect("ws://192.168.178.21:3026");
+	if(server_name == "localhost"){
+		socket = io.connect("ws://192.168.178.21:3026");
+	}else{
+		socket = io.connect("wss://eventtools.conservices.de:3000");
+	}
+
+	
 
 	socket.on("connect", function () {
 		console.log("Socket connected.");

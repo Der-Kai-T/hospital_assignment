@@ -13,6 +13,10 @@
     die;
   }
 
+  echo"
+  <script>
+  let server_name = '".$_SERVER['SERVER_NAME']."';
+  </script>";
 
   include("include/db_connect.php");
   include("include/db_querys.php");
