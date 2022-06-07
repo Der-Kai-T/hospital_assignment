@@ -140,7 +140,7 @@ function update_hospital(item){
 			newclass = bg_colors.none;
 		}else{
 			mins = Math.floor((closure.hospital_closure_start_ts - now)/60);
-			newtxt = $discipline_name + " in "+ mins + " " + " Minuten gesperrt";  //TODO add timespan
+			newtxt = discipline_name + " in "+ mins + " " + " Minuten gesperrt";  //TODO add timespan
 		
 			$('#hospital_txt_' + hospital_id).addClass("bg-orange");
 		}
