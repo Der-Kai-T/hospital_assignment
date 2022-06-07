@@ -166,14 +166,7 @@
 				</a>
 			</li> -->
 
-			<li class='nav-item'>
-				<a href='https://kai-thater.de/bug' target="_blanck" class='nav-link'>
-					<i class='nav-icon fa fa-bug'></i>
-					<p>
-					Bug-Tracker
-					</p>
-				</a>
-			</li>
+			
 		
         </ul>
       </nav>
