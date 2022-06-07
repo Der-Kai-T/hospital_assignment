@@ -31,7 +31,7 @@ con.on("error", function (err) {
 });
 
 
-const {server_location} = require("./server-location.json");
+const {server_location} = require("./server_location.json");
 
 if(server_location = "local"){
 	var httpServer = http.createServer(app); //for debuggin locally
