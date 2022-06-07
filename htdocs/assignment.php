@@ -152,7 +152,7 @@
             if($next_free_capacity == 0){
                 $text   = "&nbsp;";
             }else{
-                $text = "nächster frei $next_free_capacity in $next_free_time min";
+                $text = "nächste frei $next_free_capacity in $next_free_time min";
             }
         }
 
@@ -189,7 +189,7 @@
                                 <td>$hospital_occupied von $hospital_capacity <b>noch $hospital_space frei</b></td>
                             <tr>
                             <tr>
-                                <th>nächster frei:</th>
+                                <th>nächste frei:</th>
                                 <td>$next_free_capacity in $next_free_time min</td>
                             <tr>
                         </table>

@@ -152,7 +152,7 @@ function update_hospital(item){
 			//floor(($next_free['transport_timestamp'] + $next_free['transport_duration'] - $now)/60);
 			let time = Math.floor((parseInt(pats.transport_timestamp) + parseInt(pats.transport_duration) - now)/60);
 
-			newtxt = "nächster frei: " + weight + " in " + time +  " Minuten";
+			newtxt = "nächste frei: " + weight + " in " + time +  " Minuten";
 		}
 	}
 
@@ -177,6 +177,14 @@ function transport_submit(){
 	data.transport_modify_id	= hd_user_id;
 
 	socket.emit("transport", data);
+	$('#transport_number').val("");
+	$('#hospital').val("--- bitte einen Eintrag auswählen ---");
+	$('#discipline').val("--- bitte einen Eintrag auswählen ---");
+	$('#transport_weight').val("");
+	$('#transport_duration').val("");
+	
+	
+
 	
 }
 

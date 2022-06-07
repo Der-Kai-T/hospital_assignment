@@ -84,7 +84,11 @@ function newConnection(socket){
 
 	function transport_received(data){
 		log("new Transport received");
-		
+		console.log(data);
+		if(data.transport_number == '' || data.hospital_id == null || data.discipline_id == null ||  data.transport_weight == '' ||  data.transport_duration == 0 ){
+			return;
+		}
+
 		//console.log(data);
 		try{
 			con.query("INSERT INTO transport (transport_number, hospital_id, discipline_id, transport_weight, transport_duration, transport_timestamp, transport_modify_ts, transport_modify_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?);",
