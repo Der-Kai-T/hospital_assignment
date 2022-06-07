@@ -12,8 +12,11 @@
     }
 
     if(isset($_GET['area'])){
-        $area = $_GET['area'];
+        
         $sql		= "SELECT * FROM hospital h, hospital_area l WHERE h.hospital_id = l.hospital_id AND l.area_id = :area ORDER BY hospital_name ASC";
+    }else if(isset($_GET['hospital_id'])){
+        
+        $sql		= "SELECT * FROM hospital WHERE hospital_id = :id";
     }else{
         $sql		= "SELECT * FROM hospital ORDER BY hospital_name ASC";
     }
@@ -24,7 +27,10 @@
     if(isset($_GET['area'])){
         $area = $_GET['area'];
         $statement->bindParam(':area', $area);
-    }else{
+    }else if(isset($_GET['hospital_id'])){
+        $hospital_id = $_GET['hospital_id'];
+        $statement->bindParam(':id', $hospital_id);
+    } else{
 
     }
   

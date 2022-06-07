@@ -96,7 +96,7 @@ function newConnection(socket){
 				data.transport_duration,
 				data.transport_timestamp,
 				data.transport_modify_ts,
-				data.transport_modfiy_id,
+				data.transport_modify_id,
 			],
 			function (error, results, fields) {
 				if (error) throw error;

@@ -68,7 +68,7 @@ function reload_hospital(){
 
 	
 
-	let now = Math.floor(Date.now() / 1000);
+	
 
 
 	var json_string = "js_db/hospital.php";
@@ -171,7 +171,7 @@ function transport_submit(){
 	data.hospital_id 			= $('#hospital').val();
 	data.discipline_id 			= $('#discipline').val();
 	data.transport_weight		= $('#transport_weight').val();
-	data.transport_duration 	= $('#transport_duration').val();
+	data.transport_duration 	= $('#transport_duration').val()*60;
 	data.transport_timestamp	= now;
 	data.transport_modify_ts	= now;
 	data.transport_modify_id	= hd_user_id;

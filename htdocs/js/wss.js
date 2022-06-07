@@ -51,6 +51,16 @@ function closure_received(data){
 	let notification_header = hospital.hospital_name + " gesperrt";
 	let notification_message = "Fachrichtung: " +  discipline.discipline_name + " bis " + time + " Uhr";
 
+
+	var json_string = "js_db/hospital.php?hospital_id=" + hospital.hospital_id;
+	var json = $.getJSON(json_string, function (data) {
+		//console.log(data);
+		data.forEach(function (item) {
+			update_hospital(item);
+		});
+	});
+
+
 	fire_notification(notification_message,notification_header,"error", 10000);
 }
 
