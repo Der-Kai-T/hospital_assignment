@@ -88,8 +88,16 @@ function reload_hospital(){
 	
 }
 
-function fire_notification(message, title = "", type="info" ){
-	toastr[type](message, title)
+function fire_notification(message, title = "", type="info", duration = 5000 ){
+	
+	let options = {
+		timeOut: duration,
+		preventDuplicates: true,
+	}
+	  
+	toastr[type](message, title, options)
+
+	
 }
 
 $("input[data-bootstrap-switch]").each(function () {

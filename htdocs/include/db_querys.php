@@ -505,6 +505,32 @@ function db_select_injectable($table, $where_=array(), $order_ = array(), $limit
 		return $return;
 	}
 
+	function get_discipline($discipline_id){
+		global $pdo_mysql, $pdo_db_user, $pdo_db_pwd;
+		$return = array();
+		
+		$sql		= "SELECT * FROM discipline WHERE discipline_id = :id";
+		
+		$pdo 		= new PDO($pdo_mysql, $pdo_db_user, $pdo_db_pwd);
+		$statement	= $pdo->prepare($sql);
+	
+		$statement->bindParam(':id', $discipline_id);
+		
+		$statement->execute();
+	
+		while($row = $statement->fetch()){
+			foreach ($row as $key => $value){
+				$row[$key] = db_parse($value);
+			}
+	
+			
+	
+			array_push($return, $row);
+		}
+
+		return $return;
+	}
+
 /*
 	====================================================================================
 	====================================================================================

@@ -21,6 +21,7 @@ function socket_init() {
 
 	socket.on("hospital", hospital_received);
 	socket.on("transport", transport_received);
+	socket.on("closure", closure_received);
 
 
 }
@@ -34,14 +35,24 @@ function hospital_received(data){
 }
 
 function transport_received(data){
-	//console.log(data);
 	let notification_header = "Neuer Transport";
 	let notification_message = data.hospital_name;
 
 	fire_notification(notification_message, notification_header, "info");
 }
 
+function closure_received(data){
+	console.log(data);
+	let hospital = data.hospital;
+	let closure = data.closure;
+	let discipline  = closure.discipline;
+	let date = new Date(closure.hospital_closure_end_ts *1000);
+	let time = date.toLocaleTimeString();
+	let notification_header = hospital.hospital_name + " gesperrt";
+	let notification_message = "Fachrichtung: " +  discipline.discipline_name + " bis " + time + " Uhr";
 
+	fire_notification(notification_message,notification_header,"error", 10000);
+}
 
 
 function set_mode(mode){

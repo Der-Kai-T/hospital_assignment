@@ -68,10 +68,18 @@ function newConnection(socket){
 
 	socket.on("transport", transport_received);
 
+	socket.on("closure", closure_received);
+
 	function hospital_transmit(data){
 		socket.broadcast.emit("hospital", data);
 		log("Hospital received");
-		console.log(data);
+		//console.log(data);
+	}
+
+	function closure_received(data){
+		socket.broadcast.emit("closure", data);
+		log("Closure received");
+		//console.log(data);
 	}
 
 	function transport_received(data){
