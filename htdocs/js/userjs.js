@@ -192,7 +192,7 @@ if (typeof open_websocket !== 'undefined'){
 
 function countdown_interval(){
 	interval_countdown = setInterval(function(){
-		$('#sec_to_sync').html(sec_counting);
+		$('#sec_to_sync').html(" "+ sec_counting);
 		sec_counting -=1;
 }, 1000);
 }

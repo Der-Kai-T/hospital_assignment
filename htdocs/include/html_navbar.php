@@ -54,7 +54,7 @@
 
     */
    ?>
-
+<!--
       <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
       <i class="far fa-bell"></i>
@@ -81,10 +81,14 @@
       <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
       </div>
       </li>
-      
+      -->
       <li class="nav-item d-none d-sm-inline-block" >
-         <a class="nav-link" href="#" title="sync" id="sync_icon">   <i class="fas fa-sync"></i> <span id='sec_to_sync'></span></a>
+        <a class="nav-link" href="#" ></a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block" >
+         <a class="nav-link" href="#" title="sync" ><i class="fas fa-sync" id="sync_icon"></i><span class="badge badge-success navbar-badge" id='sec_to_sync'></span></a>
+      </li>
+      
       
 
 
