@@ -88,13 +88,17 @@ function reload_hospital(){
 	
 }
 
+function fire_notification(message, title = "", type="info" ){
+	toastr[type](message, title)
+}
+
 $("input[data-bootstrap-switch]").each(function () {
 	$(this).bootstrapSwitch("state", $(this).prop("checked"));
 });
 
 
 function update_hospital(item){
-	console.log(item);
+	//console.log(item);
 	let now = Math.floor(Date.now() / 1000);
 	
 	var hospital_id = item.hospital_id;

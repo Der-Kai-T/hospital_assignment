@@ -59,6 +59,8 @@
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+
+  <link rel="stylesheet" href="plugins/toastr/toastr.css" />
     
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>

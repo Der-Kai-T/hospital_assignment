@@ -33,7 +33,7 @@
 
         echo "<script>
             let data = $hospital_json;
-            socket_init();
+            
             socket.emit('hospital', data);
             </script>";
 

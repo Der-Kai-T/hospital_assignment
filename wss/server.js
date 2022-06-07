@@ -3,7 +3,7 @@ console.log("server.js is loading");
 var fs = require("fs");
 var http = require("http");
 var https = require("https");
-
+const utf8 = require("utf8");
 
 
 var express = require("express");
@@ -76,6 +76,7 @@ function newConnection(socket){
 
 	function transport_received(data){
 		log("new Transport received");
+		
 		//console.log(data);
 		try{
 			con.query("INSERT INTO transport (transport_number, hospital_id, discipline_id, transport_weight, transport_duration, transport_timestamp, transport_modify_ts, transport_modify_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?);",
@@ -141,9 +142,10 @@ function newConnection(socket){
 												if(error) throw error;
 											
 												hospital.hospital_patients = results;
-						
 												
-												
+												data.hospital_name =utf8.decode(hospital.hospital_name);
+												 
+												io.sockets.emit("transport", data);
 												io.sockets.emit("hospital", hospital);
 											});
 										}catch (e) {

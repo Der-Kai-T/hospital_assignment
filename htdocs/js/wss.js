@@ -1,6 +1,6 @@
 var socket;
 
-
+socket_init();
 
 
 function socket_init() {
@@ -20,6 +20,7 @@ function socket_init() {
 	});
 
 	socket.on("hospital", hospital_received);
+	socket.on("transport", transport_received);
 
 
 }
@@ -30,6 +31,14 @@ function socket_init() {
 function hospital_received(data){
 	console.log("hospital received");
 	update_hospital(data);
+}
+
+function transport_received(data){
+	//console.log(data);
+	let notification_header = "Neuer Transport";
+	let notification_message = data.hospital_name;
+
+	fire_notification(notification_message, notification_header, "info");
 }
 
 
