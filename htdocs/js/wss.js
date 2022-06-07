@@ -11,7 +11,7 @@ function socket_init() {
 	if(server_name == "localhost"){
 		socket = io.connect("ws://192.168.178.21:3026");
 	}else{
-		socket = io.connect("wss://eventtools.conservices.de:3000");
+		socket = io.connect("wss://hospital-dispatch.akkon-hh.de:3026");
 	}
 
 	
