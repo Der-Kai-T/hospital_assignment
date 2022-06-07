@@ -11,7 +11,7 @@
     <strong class="onlyprint">Ausdruck aus <?php echo $global_application_name; ?> | <?php echo(UnixToTime(time())); ?></a></strong>
     <strong class="dontprint">Copyright &copy; 2018 - 2022 | Developed by <a href="mailto:dev@kai-thater.de">Kai Thater</a></strong>
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version:</b> 0.5.8
+      <b>Version:</b> 0.6.1
 	  
     </div>
   </footer>

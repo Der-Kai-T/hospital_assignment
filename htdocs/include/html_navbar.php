@@ -82,6 +82,11 @@
       </div>
       </li>
       
+      <li class="nav-item d-none d-sm-inline-block" >
+         <a class="nav-link" href="#" title="sync" id="sync_icon">   <i class="fas fa-sync"></i> <span id='sec_to_sync'></span></a>
+      </li>
+      
+
 
       <li class="nav-item d-none d-sm-inline-block" >
          <a class="nav-link" href="#" title="offline" id="is_offline">   <i class="fas fa-globe-europe text-danger"></i></a>

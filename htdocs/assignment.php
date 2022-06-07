@@ -214,3 +214,7 @@
 
 
 ?>
+
+<script>
+    let open_websocket = true;
+    </script>

@@ -1,22 +1,35 @@
 var socket;
 
+if (typeof open_websocket !== 'undefined'){
+	socket_init();
+}
+
+
 function socket_init() {
 	console.log("Connecting to socket.io");
 
 	//socket = io.connect("wss://eventtools.conservices.de:3000");
-	socket = io.connect("ws://localhost:3026");
+	socket = io.connect("ws://192.168.178.21:3026");
 
 	socket.on("connect", function () {
 		console.log("Socket connected.");
 		set_mode("online");
 	});
 
+	socket.on("hospital", hospital_received);
+
+
 }
 
-function update_hospital(id, space, text){
-	$('#hospital_space_'+id).html(space.toString());
-	$('#hospital_txt_' + id).html(text.toString());
+
+
+
+function hospital_received(data){
+	//console.log(data);
+	update_hospital(data);
 }
+
+
 
 
 function set_mode(mode){

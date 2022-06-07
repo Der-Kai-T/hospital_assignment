@@ -9,3 +9,5 @@ wss/node_modules/
 *.pem
 *credentials.json
 *.code-workspace
+wss/credentials_online.json
+wss/server_location.json
