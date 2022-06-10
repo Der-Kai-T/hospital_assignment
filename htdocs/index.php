@@ -66,7 +66,8 @@
   <script src="plugins/jquery/jquery.min.js"></script>
     
   <!-- Socket.IO -->
-  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+<!--  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script> -->
+<script src='js/socket.io.min.js'></script>
   <script src='js/wss.js'></script>
 
  <?php//TODO make local?>
