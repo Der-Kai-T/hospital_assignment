@@ -36,12 +36,20 @@ const {server_location} = require("./server_location.json");
 if(server_location == "local"){
 	var httpServer = http.createServer(app); //for debuggin locally
 }else{
+	var options = {
+		key: fs.readFileSync('static/cert/key.pem'),
+		cert: fs.readFileSync('static/cert/cert.pem'),
+		ca: fs.readFileSync('static/cert/fullchain.pem'),
+	};
+	/*Source: https://community.letsencrypt.org/t/letsencrypt-working-with-socket-io/64726 */
+
 	
-	var privatekey = fs.readFileSync("static/cert/key.pem", "utf8");
+	/*var privatekey = fs.readFileSync("static/cert/key.pem", "utf8");
 	var certificat = fs.readFileSync("static/cert/cert.pem", "utf8");
 	var credentials = { key: privatekey, cert: certificat };
+*/
 
-	var httpServer = https.createServer(credentials, app); // for deployment on hetzner-server
+	var httpServer = https.createServer(options, app); // for deployment on hetzner-server
 }
 
 
